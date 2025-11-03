@@ -120,5 +120,8 @@ for rule in app.url_map.iter_rules():
 
 
 # ✅ Run server
+# if __name__ == "__main__":
+#     app.run(debug=True)
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
+
