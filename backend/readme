@@ -1,0 +1,13 @@
+# #to read the databe
+
+# import sqlite3
+# conn = sqlite3.connect("database.db")
+# cursor = conn.cursor()
+# cursor.execute("SELECT name, email, registered FROM users;")
+# rows = cursor.fetchall()
+# print(rows)
+# conn.close()
+# #how to start server
+# python -m venv venv    
+#  .\venv\Scripts\Activate.ps1  
+# python app.py

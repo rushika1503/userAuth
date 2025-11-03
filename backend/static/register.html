@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+</head>
+<body>
+      <a href="index.html">Main Page</a>
+  <a href="login.html">Login</a>
+  <a href="users.html">View Registered Users</a>
+  <h2>Register</h2>
+  <form id="registerForm">
+    <input type="text" id="fname" placeholder="First Name" required><br><br>
+    <input type="text" id="lname" placeholder="Last Name" required><br><br>
+    <input type="email" id="email" placeholder="Email" required><br><br>
+    <input type="mobile" id="mobile" placeholder="Mobile" required><br><br>
+    <input type="password" id="password" placeholder="Password" required><br><br>
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required><br><br>
+    <button type="submit">Register</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fname = document.getElementById("fname").value;
+      const lname = document.getElementById("lname").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const mobile = document.getElementById("mobile").value;
+
+
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fname, lname, email, mobile, password, confirmPassword })
+      });
+
+      const data = await res.json();
+      document.getElementById("message").innerText = data.message || data.error;
+    });
+  </script>
+</body>
+</html>
